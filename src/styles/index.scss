@@ -1,0 +1,166 @@
+$filter-button-color: #ed6b86;
+$reset-button-color: #c2bcab;
+$input-field-border-color: #c1bcac;
+$border-radius: 4px;
+$transition: 0.3s;
+
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+@mixin transition($transition) {
+  transition: $transition;
+}
+
+@mixin button($color) {
+  @include border-radius($border-radius);
+  @include transition($transition);
+  font-weight: 600;
+  cursor: pointer;
+  background-color: $color;
+  height: 43px;
+  color: #fff;
+  font-size: 14px;
+  padding: 0 28px;
+  text-align: center;
+  letter-spacing: 1px;
+  border: none;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: darken($color, 10);
+  }
+  &:active {
+    background-color: darken($color, 14);
+  }
+}
+
+@mixin input($color) {
+  @include border-radius($border-radius);
+  @include transition($transition);
+  background-color: transparent;
+  border: 2px solid $color;
+  font-size: 16px;
+  padding: 8px;
+
+  &:hover {
+    border-color: darken($color, 20);
+  }
+  &:focus {
+    border-color: darken($color, 40);
+  }
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.filter-wrapper {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+
+  .filter {
+    display: flex;
+    justify-content: space-between;
+    margin: 50px;
+    width: 900px;
+
+    .price-range {
+      .price-input {
+        @include input($input-field-border-color);
+        width: 60px;
+        margin-right: 10px;
+      }
+    }
+
+    .filter-by-stars {
+      @include input($input-field-border-color);
+      width: 80px;
+    }
+
+    .filter-buttons {
+      .filter-button {
+        @include button($filter-button-color);
+        margin-right: 10px;
+      }
+
+      .reset-button {
+        @include button($reset-button-color);
+      }
+    }
+  }
+}
+.results {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .card-wrapper {
+    @include border-radius($border-radius);
+    @include transition($transition);
+    margin: 10px;
+    width: 300px;
+    box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, 0.2);
+    border-color: rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+
+    // :hover {
+    //   box-shadow: 2px 4px 8px 0 rgba(46, 61, 73, 0.2);
+    // }
+  }
+
+  .card-image {
+    height: 200px;
+    .image {
+      border-top-left-radius: $border-radius;
+      border-top-right-radius: $border-radius;
+      width: 100%;
+    }
+  }
+
+  .card-body {
+    border-top: 1px solid $input-field-border-color;
+    height: 80px;
+    padding: 10px;
+
+    .first-level-info {
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
+    .second-level-info {
+      display: flex;
+
+      .stars {
+        font-size: small;
+        margin-right: 20px;
+        color: darken($input-field-border-color, 40);
+      }
+
+      .location {
+        font-size: small;
+        color: darken($input-field-border-color, 10);
+      }
+    }
+    .third-level-info {
+      display: flex;
+      margin-top: 20px;
+      justify-content: space-between;
+      align-items: baseline;
+
+      .cost {
+        font-size: larger;
+        font-weight: 600;
+
+        .per-night {
+          font-size: small;
+          font-weight: normal;
+          color: darken($input-field-border-color, 10);
+        }
+      }
+      .review {
+      }
+    }
+  }
+}
