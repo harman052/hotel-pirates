@@ -1,8 +1,9 @@
-$filter-button-color: #ed6b86;
+$filter-button-color: #e80b6b;
 $reset-button-color: #c2bcab;
 $input-field-border-color: #c1bcac;
 $border-radius: 4px;
 $transition: 0.3s;
+$star-color: #eeba0b;
 
 @mixin border-radius($radius) {
   border-radius: $radius;
@@ -15,7 +16,7 @@ $transition: 0.3s;
 @mixin button($color) {
   @include border-radius($border-radius);
   @include transition($transition);
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   background-color: $color;
   height: 43px;
@@ -52,18 +53,21 @@ $transition: 0.3s;
 }
 
 body {
-  font-family: sans-serif;
+  font-family: "Rubik", sans-serif;
+  margin: 0;
 }
 
 .filter-wrapper {
   display: flex;
   align-items: baseline;
   justify-content: center;
+  box-shadow: 2px 4px 8px 0 rgba(46, 61, 73, 0.2);
+  margin-bottom: 46px;
 
   .filter {
     display: flex;
     justify-content: space-between;
-    margin: 50px;
+    margin: 25px;
     width: 900px;
 
     .price-range {
@@ -96,6 +100,24 @@ body {
   justify-content: center;
   flex-wrap: wrap;
 
+  .loading {
+    text-align: center;
+    i {
+      font-size: 25px;
+      margin-bottom: 5px;
+      -webkit-animation: rotation 2s infinite linear;
+    }
+
+    @-webkit-keyframes rotation {
+      from {
+        -webkit-transform: rotate(0deg);
+      }
+      to {
+        -webkit-transform: rotate(359deg);
+      }
+    }
+  }
+
   .card-wrapper {
     @include border-radius($border-radius);
     @include transition($transition);
@@ -122,44 +144,59 @@ body {
   .card-body {
     border-top: 1px solid $input-field-border-color;
     height: 80px;
-    padding: 10px;
+    padding: 8px 12px 16px 12px;
 
     .first-level-info {
-      font-weight: 600;
-      line-height: 1.5;
+      font-weight: 500;
     }
 
     .second-level-info {
       display: flex;
+      line-height: 2;
 
       .stars {
-        font-size: small;
+        font-size: 14px;
         margin-right: 20px;
-        color: darken($input-field-border-color, 40);
+        color: $star-color;
       }
 
       .location {
-        font-size: small;
-        color: darken($input-field-border-color, 10);
+        display: flex;
+        justify-content: center;
+        align-items: baseline;
+        i {
+          margin-right: 6px;
+          color: darken($input-field-border-color, 40);
+        }
+        .country {
+          font-size: 14px;
+          color: darken($input-field-border-color, 40);
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          width: 200px;
+        }
       }
     }
     .third-level-info {
       display: flex;
-      margin-top: 20px;
+      margin-top: 16px;
       justify-content: space-between;
       align-items: baseline;
 
       .cost {
         font-size: larger;
-        font-weight: 600;
-
-        .per-night {
-          font-size: small;
-          font-weight: normal;
-          color: darken($input-field-border-color, 10);
-        }
       }
-      .review {
+
+      .reviews {
+        font-size: 14px;
+        a {
+          color: $filter-button-color;
+          text-decoration: none;
+          i {
+            margin-left: 5px;
+          }
+        }
       }
     }
   }
