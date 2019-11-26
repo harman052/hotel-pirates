@@ -1,57 +1,28 @@
-export const filterByStars = (hotelList, numberOfStars) => {
-  if (numberOfStars === "all") {
-    return hotelList;
-  }
-  if (numberOfStars > 0 && numberOfStars <= 5) {
-    return hotelList.filter(hotel => numberOfStars == hotel.stars);
-  }
-};
+import { getHotelList } from "./hotelList";
+import defaultSettings from "../config/defaultSettings";
 
-// export const sortLowestToHighestPrice = hotelList => {
-//   return hotelList.sort((a, b) => a.price - b.price);
-// };
+const {
+  filter: {
+    stars: defaultStars,
+    minPrice: defaultMinPrice,
+    maxPrice: defaultMaxPrice
+  }
+} = defaultSettings;
 
-export const getHotelWithinPriceRange = (
-  minPrice = "",
-  maxPrice = "",
-  hotelList
-) => {
-  /**
-   * Default case
-   */
-  if (!minPrice && !maxPrice) {
-    return hotelList;
-  }
-  /**
-   * If no max limit provided, returning results will have no upper bound limit
-   * and not less than min price provided
-   */
-  if (minPrice && !maxPrice) {
-    return hotelList.filter(hotel => hotel.price >= minPrice);
-  }
-  /**
-   * If no min limit provided, returning results will have no lower bound limit
-   * and not more than max price provided
-   */
-  if (!minPrice && maxPrice) {
-    return hotelList.filter(hotel => hotel.price <= maxPrice);
-  }
-  /**
-   * Invalid case, return no results
-   */
-  if (minPrice > maxPrice) {
-    return [];
-  }
+export const filterForm = document.getElementsByClassName("filter-wrapper")[0];
+filterForm.addEventListener("submit", e => {
+  e.preventDefault();
+  const minPrice = document.getElementById("min-price").value;
+  const maxPrice = document.getElementById("max-price").value;
+  const stars = document.getElementById("filter-by-stars").value;
+  getHotelList(stars, minPrice, maxPrice);
+});
 
-  return hotelList.filter(
-    hotel => hotel.price >= minPrice && hotel.price <= maxPrice
-  );
-};
-
-export const applyFilters = (hotelList, numberOfStars, minPrice, maxPrice) => {
-  return getHotelWithinPriceRange(
-    minPrice,
-    maxPrice,
-    filterByStars(hotelList, numberOfStars)
-  );
-};
+export const resetForm = document.getElementsByClassName("filter-wrapper")[0];
+resetForm.addEventListener("reset", e => {
+  e.preventDefault();
+  document.getElementById("min-price").value = defaultMinPrice;
+  document.getElementById("max-price").value = defaultMaxPrice;
+  document.getElementById("filter-by-stars").value = defaultStars;
+  getHotelList(defaultStars, defaultMinPrice, defaultMaxPrice);
+});

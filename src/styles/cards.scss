@@ -1,0 +1,79 @@
+@import "./fontSizes.scss";
+
+.card-wrapper {
+  @include border-radius($border-radius);
+  margin: 10px;
+  width: 300px;
+  box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, 0.2);
+  border-color: rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.card-image {
+  height: 200px;
+  .image {
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    width: 100%;
+  }
+}
+
+.card-body {
+  border-top: 1px solid $color-input-field-border;
+  height: 80px;
+  padding: 8px 12px 16px 12px;
+}
+
+.first-level-info {
+  font-weight: 500;
+}
+
+.second-level-info {
+  display: flex;
+  line-height: 2;
+
+  .stars {
+    font-size: $fontSize-small;
+    margin-right: 20px;
+    color: $color-star;
+  }
+
+  .location {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    i {
+      margin-right: 6px;
+      color: darken($color-input-field-border, 40);
+    }
+    .country {
+      font-size: $fontSize-small;
+      color: darken($color-input-field-border, 40);
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 200px;
+    }
+  }
+}
+.third-level-info {
+  display: flex;
+  margin-top: 16px;
+  justify-content: space-between;
+  align-items: baseline;
+
+  .cost {
+    font-size: $fontSize-large;
+  }
+
+  .reviews {
+    font-size: $fontSize-small;
+    a {
+      color: $color-bg-filter-button;
+      text-decoration: none;
+      i {
+        margin-left: 5px;
+      }
+    }
+  }
+}

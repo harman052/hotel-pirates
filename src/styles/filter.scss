@@ -1,0 +1,38 @@
+.filter-wrapper {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  box-shadow: 2px 4px 8px 0 rgba(46, 61, 73, 0.2);
+  margin-bottom: 46px;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px;
+  width: 900px;
+}
+
+.price-range {
+  .price-input {
+    @include input($color-input-field-border);
+    width: 60px;
+    margin-right: 10px;
+  }
+}
+
+.filter-by-stars {
+  @include input($color-input-field-border);
+  width: 80px;
+}
+
+.filter-buttons-wrapper {
+  .filter-button {
+    @include button($color-bg-filter-button);
+    margin-right: 10px;
+  }
+
+  .reset-button {
+    @include button($color-bg-reset-button);
+  }
+}

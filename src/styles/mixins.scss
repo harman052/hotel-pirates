@@ -1,0 +1,71 @@
+@import "./base.scss";
+
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+@mixin transition($transition) {
+  transition: $transition;
+}
+
+@mixin button($background-color) {
+  @include border-radius($border-radius);
+  @include transition($transition);
+  font-weight: 500;
+  cursor: pointer;
+  background-color: $background-color;
+  height: 43px;
+  color: $color-button-text;
+  font-size: $fontSize-small;
+  padding: 0 28px;
+  text-align: center;
+  letter-spacing: 1px;
+  border: none;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: darken($background-color, 10);
+  }
+  &:active {
+    background-color: darken($background-color, 14);
+  }
+}
+
+@mixin input($border-color) {
+  @include border-radius($border-radius);
+  @include transition($transition);
+  background-color: transparent;
+  border: 2px solid $border-color;
+  font-size: $fontSize-normal;
+  padding: 8px;
+
+  &:hover {
+    border-color: darken($border-color, 20);
+  }
+  &:focus {
+    border-color: darken($border-color, 40);
+  }
+}
+
+@mixin rotation-animation() {
+  -webkit-animation: rotation 2s infinite linear;
+  -moz-animation: rotation 2s infinite linear;
+  -o-animation: rotation 2s infinite linear;
+  animation: rotation 2s infinite linear;
+  @-webkit-keyframes rotation {
+    from {
+      -webkit-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(359deg);
+      -moz-transform: rotate(359deg);
+      -o-transform: rotate(359deg);
+      -ms-transform: rotate(359deg);
+      transform: rotate(359deg);
+    }
+  }
+}
