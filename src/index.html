@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       href="https://fonts.googleapis.com/css?family=Rubik:400,500&display=swap"
       rel="stylesheet"
@@ -16,25 +17,24 @@
     <form class="filter-wrapper">
       <div class="filter">
         <div class="price-range">
-          <label for="min-price">Min</label>
+          <label>Price range</label>
           <input
             class="price-input"
             type="number"
             name="min"
             id="min-price"
-            placeholder="0"
+            placeholder="Min"
           />
-          <label for="name">Max</label>
           <input
             class="price-input"
             type="number"
             name="max"
             id="max-price"
-            placeholder="1000"
+            placeholder="Max"
           />
         </div>
         <div class="star-dropdown">
-          <label for="filter-by-stars">Filter by stars </label>
+          <label for="filter-by-stars">Star rating </label>
           <select
             class="filter-by-stars"
             name="select-stars"
@@ -70,6 +70,8 @@
         </div>
       </div>
     </form>
-    <div class="results"></div>
+    <div class="results-wrapper">
+      <div class="results"></div>
+    </div>
   </body>
 </html>

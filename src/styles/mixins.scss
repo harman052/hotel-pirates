@@ -17,12 +17,11 @@
   height: 43px;
   color: $color-button-text;
   font-size: $fontSize-small;
-  padding: 0 28px;
+  padding: 0 26px;
   text-align: center;
   letter-spacing: 1px;
   border: none;
   text-transform: uppercase;
-
   &:hover {
     background-color: darken($background-color, 10);
   }
@@ -38,7 +37,6 @@
   border: 2px solid $border-color;
   font-size: $fontSize-normal;
   padding: 8px;
-
   &:hover {
     border-color: darken($border-color, 20);
   }

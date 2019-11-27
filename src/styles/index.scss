@@ -8,6 +8,10 @@ body {
   margin: 0;
 }
 
+.results-wrapper {
+  margin-bottom: 30px;
+}
+
 .results {
   display: flex;
   justify-content: center;
@@ -20,5 +24,23 @@ body {
     font-size: $fontSize-larger;
     margin-bottom: 5px;
     @include rotation-animation();
+  }
+}
+
+// Media queries
+
+@media (min-width: 1660px) {
+  .results-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  .results {
+    width: 1440px;
+  }
+}
+
+@media (min-width: 2550px) {
+  .results {
+    width: 1920px;
   }
 }

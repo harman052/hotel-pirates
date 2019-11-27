@@ -9,6 +9,7 @@
 .filter {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 25px;
   width: 900px;
 }
@@ -31,8 +32,18 @@
     @include button($color-bg-filter-button);
     margin-right: 10px;
   }
-
   .reset-button {
     @include button($color-bg-reset-button);
+  }
+}
+
+// Media queries
+@media (max-width: 760px) {
+  .filter {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column;
+    align-items: center;
+    height: 150px;
   }
 }
